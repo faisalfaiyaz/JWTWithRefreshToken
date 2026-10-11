@@ -38,12 +38,20 @@ namespace JWTExample.Services
                     user.Email),
 
                 new Claim(
-                    ClaimTypes.Name,
-                    user.Name),
+                    JwtRegisteredClaimNames.Jti,
+                    Guid.NewGuid().ToString()),
 
                 new Claim(
-                    JwtRegisteredClaimNames.Jti,
-                    Guid.NewGuid().ToString())
+                    JwtRegisteredClaimNames.Iat,
+                    DateTime.UtcNow.ToString()),
+
+                  new Claim(
+                    ClaimTypes.NameIdentifier,
+                    user.Email),
+
+                new Claim(
+                    ClaimTypes.Name,
+                    user.Name)
             };
 
             var expiresAt = DateTime.UtcNow.AddMinutes(_options.ExpiryMinutes);

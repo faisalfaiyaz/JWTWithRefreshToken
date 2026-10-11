@@ -1,4 +1,5 @@
-﻿namespace JWTExample.DTOs;
+﻿
+namespace JWTExample.DTOs;
 
 public class AuthenticationResponse
 {
@@ -11,4 +12,8 @@ public class AuthenticationResponse
     public string Token { get; set; } = string.Empty;
 
     public DateTime ExpiresAt { get; set; }
+
+    public string RefreshToken { get; set; } = string.Empty;
+
+    public DateTime RefreshTokenExpiresAt { get; set; }
 }
